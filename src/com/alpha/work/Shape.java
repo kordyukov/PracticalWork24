@@ -1,15 +1,23 @@
 package com.alpha.work;
 
-public abstract class Shape implements Drawable, Comparable {
+public abstract class Shape implements Drawable, Comparable, Cloneable {
     private String color;
+
 
     public Shape(String color) {
         this.color = color;
     }
 
+    public Shape(Shape other){
+       this.color = new String(other.getColor());
+    }
+
     public Shape() {
     }
 
+    public void setColor(String color) {
+        this.color = color;
+    }
 
     public abstract double calcArea();
 
@@ -35,5 +43,10 @@ public abstract class Shape implements Drawable, Comparable {
         if (this.calcArea()>((Shape)o).calcArea()) return 1;
         if (this.calcArea()<((Shape)o).calcArea()) return -1;
         return 0;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

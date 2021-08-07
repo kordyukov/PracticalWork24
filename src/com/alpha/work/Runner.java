@@ -3,7 +3,7 @@ package com.alpha.work;
 import java.util.Arrays;
 
 public class Runner {
-    public void run(){
+    public void run() throws CloneNotSupportedException {
         Shape[] shapeSort;
 
     WriteShapes(CreateShapes());
@@ -26,6 +26,31 @@ public class Runner {
       System.out.println("----------------------------------------------------------------------");
         System.out.println("Сортировка по цвету с Comparator: ");
       WriteShapes(shapeSort);
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("Клонирование с использованием clone()");
+       Shape shape = new Shape("Red") {
+           @Override
+           public double calcArea() {
+               return 0;
+           }
+       };
+       Shape shape1 = (Shape)shape.clone();
+        System.out.println(shape + "hashcode: "+ shape.hashCode());
+        System.out.println("clone obj: "+shape1+ "hashcode: "+ shape1.hashCode());
+        shape1.setColor("White");
+        System.out.println("clone obj new color : " + shape1+ "hashcode: "+ shape1.hashCode());
+        System.out.println("-----------------------------------------------------------------");
+        System.out.println("Глубоое клонирование: ");
+        Shape shape2 = new Shape(shape1) {
+            @Override
+            public double calcArea() {
+                return 0;
+            }
+        };
+        System.out.println("obj "+shape1+ "hashcode: "+ shape1.hashCode());
+        System.out.println("clone obj: "+shape2+ "hashcode: "+ shape2.hashCode());
+
+
 
 
     }
