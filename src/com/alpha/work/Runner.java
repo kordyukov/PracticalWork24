@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class Runner {
     public void run(){
         Shape[] shapeSort;
+
     WriteShapes(CreateShapes());
     Rectangle rectangle = new Rectangle("White",25,36);
     Rectangle rectangle1 = new Rectangle("Red",22,15);
@@ -16,8 +17,14 @@ public class Runner {
          System.out.println("Площадь первого прямоугольниа меньше ворого!");
      }
         System.out.println("------------------------------------------------------------------------");
-      shapeSort = CreateShapes();
+        System.out.println("Сорировка по площади с Compaable: ");
+     shapeSort = CreateShapes();
       Arrays.sort(shapeSort);
+      WriteShapes(shapeSort);
+
+      Arrays.sort(shapeSort,new ShapesComparator());
+      System.out.println("----------------------------------------------------------------------");
+        System.out.println("Сортировка по цвету с Comparator: ");
       WriteShapes(shapeSort);
 
 

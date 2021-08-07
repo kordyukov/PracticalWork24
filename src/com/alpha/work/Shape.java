@@ -13,6 +13,10 @@ public abstract class Shape implements Drawable, Comparable {
 
     public abstract double calcArea();
 
+    public String getColor(){
+        return color;
+    }
+
     @Override
     public String toString() {
         return "class= Shape " +
