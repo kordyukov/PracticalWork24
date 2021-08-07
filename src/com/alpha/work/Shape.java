@@ -1,6 +1,6 @@
 package com.alpha.work;
 
-public abstract class Shape implements Drawable {
+public abstract class Shape implements Drawable, Comparable {
     private String color;
 
     public Shape(String color) {
@@ -24,5 +24,12 @@ public abstract class Shape implements Drawable {
     public void draw() {
         System.out.print("class = "+ this +", color = "+color + ", area = " );
         System.out.printf("%.2f \n", calcArea());
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if (this.calcArea()>((Shape)o).calcArea()) return 1;
+        if (this.calcArea()<((Shape)o).calcArea()) return -1;
+        return 0;
     }
 }
